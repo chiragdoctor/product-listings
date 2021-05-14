@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
+import Header from './components/header/Header';
 
 describe('App Component', () => {
   let wrapper;
@@ -8,9 +9,8 @@ describe('App Component', () => {
     wrapper = shallow(<App />);
   });
 
-  it('should render title', () => {
-    const h1 = wrapper.find('h1');
+  it('should render Header', () => {
+    const h1 = wrapper.find(Header);
     expect(h1.exists()).toBe(true);
-    expect(h1.text()).toEqual('Product Listings');
   });
 });
