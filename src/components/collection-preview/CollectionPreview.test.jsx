@@ -75,7 +75,7 @@ describe('Collection Preview Component', () => {
   it('should render button to hide sold products', () => {
     const btn = wrapper.find(CustomButton);
     expect(btn.exists()).toBe(true);
-    expect(btn.text()).toBe('HIDE SOLD');
+    expect(btn.text()).toBe('HIDE SOLD ITEMS');
   });
 
   it('should change button text on click of button', () => {
@@ -86,7 +86,7 @@ describe('Collection Preview Component', () => {
     act(() => {
       wrapper.update();
     });
-    expect(btn.text()).toBe('SHOW ALL');
+    expect(btn.text()).toBe('SHOW ALL ITEMS');
   });
 
   it('should dispatch setFilteredProducts on click of button', () => {

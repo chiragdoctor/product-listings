@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { HIDE_SOLD_ITEMS, SHOW_ALL_ITEMS } from '../../constants';
 import { setFilteredProducts } from '../../redux/Product/product.actions';
 import {
   selectFilteredProducts,
@@ -27,7 +28,7 @@ const CollectionPreview = () => {
     <div className='collection-preview'>
       <h1 className='title'>Products ({filteredProducts.length})</h1>
       <CustomButton onClick={handleBtnClick}>
-        {hide ? 'HIDE SOLD' : 'SHOW ALL'}
+        {hide ? HIDE_SOLD_ITEMS : SHOW_ALL_ITEMS}
       </CustomButton>
       <div className='preview'>
         {filteredProducts.map(product => (
