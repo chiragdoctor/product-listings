@@ -5,6 +5,8 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import CollectionPreview from './CollectionPreview';
 import CollectionItem from '../collection-item/CollectionItem';
+import CustomButton from '../custom-button/CustomButton';
+import { act } from 'react-dom/test-utils';
 
 describe('Collection Preview Component', () => {
   let wrapper;
@@ -43,6 +45,8 @@ describe('Collection Preview Component', () => {
     products: {
       products: mockProducts,
       liked: mockProducts,
+      hidden: true,
+      filteredProducts: mockProducts,
     },
   };
   const mockStore = configureStore([thunk]);
@@ -66,5 +70,61 @@ describe('Collection Preview Component', () => {
     const ci = wrapper.find(CollectionItem);
     expect(ci.exists()).toBe(true);
     expect(ci).toHaveLength(4);
+  });
+
+  it('should render button to hide sold products', () => {
+    const btn = wrapper.find(CustomButton);
+    expect(btn.exists()).toBe(true);
+    expect(btn.text()).toBe('HIDE SOLD');
+  });
+
+  it('should change button text on click of button', () => {
+    const btn = wrapper.find(CustomButton);
+    act(() => {
+      btn.props().onClick();
+    });
+    act(() => {
+      wrapper.update();
+    });
+    expect(btn.text()).toBe('SHOW ALL');
+  });
+
+  it('should dispatch setFilteredProducts on click of button', () => {
+    const btn = wrapper.find(CustomButton);
+    act(() => {
+      btn.props().onClick();
+    });
+    expect(store.dispatch).toHaveBeenCalledWith({
+      type: 'SET_FILTERED_PRODUCTS',
+      products: [mockProducts[3]],
+    });
+  });
+
+  it('should hide sold products on click of button', () => {
+    let initialState = {
+      products: {
+        products: mockProducts,
+        liked: mockProducts,
+        hidden: true,
+        filteredProducts: [mockProducts[3]],
+      },
+    };
+    const mockStore = configureStore([thunk]);
+    store = mockStore(initialState);
+    wrapper = mount(
+      <Provider store={store}>
+        <CollectionPreview />
+      </Provider>,
+    );
+    const btn = wrapper.find(CustomButton);
+    act(() => {
+      btn.props().onClick();
+    });
+    act(() => {
+      wrapper.update();
+    });
+    const items = wrapper.find(CollectionItem);
+    expect(items.exists()).toBe(true);
+    expect(items).toHaveLength(1);
   });
 });

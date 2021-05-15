@@ -1,12 +1,14 @@
 import {
   LIKE_PRODUCT,
   SET_ALL_PRODUCTS,
+  SET_FILTERED_PRODUCTS,
   TOGGLE_FAVORITE_DROPDOWN,
   UNLIKE_PRODUCT,
 } from './product.types';
 
 const INITIAL_STATE = {
   products: [],
+  filteredProducts: [],
   liked: [],
   hidden: true,
 };
@@ -17,6 +19,11 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         products: action.products,
+      };
+    case SET_FILTERED_PRODUCTS:
+      return {
+        ...state,
+        filteredProducts: action.products,
       };
     case LIKE_PRODUCT:
       return {

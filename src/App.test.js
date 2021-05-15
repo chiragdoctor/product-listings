@@ -18,6 +18,8 @@ describe('App Component', () => {
     products: {
       products: mockProducts,
       liked: mockProducts,
+      hidden: false,
+      filteredProducts: mockProducts,
     },
   };
   const mockStore = configureStore([thunk]);

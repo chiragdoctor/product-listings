@@ -10,7 +10,7 @@ import {
 } from '../../redux/Product/product.actions';
 
 const CollectionItem = ({ product }) => {
-  const { id, name, img, price, brand, size } = product;
+  const { id, name, img, price, brand, size, sold } = product;
   const dispatch = useDispatch();
   const liked = useSelector(selectLikedProducts);
   const handleLike = product => {
@@ -28,6 +28,11 @@ const CollectionItem = ({ product }) => {
   return (
     <div className='collection-item'>
       <div className='image' style={{ backgroundImage: `url(${img})` }}>
+        {sold && (
+          <div className='sold'>
+            <p className='center'>SOLD</p>
+          </div>
+        )}
         <div
           className={`thumbs-up-container ${
             checkProductLiked(id) ? 'container-red' : ''

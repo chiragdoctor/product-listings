@@ -3,11 +3,19 @@ import {
   SET_ALL_PRODUCTS,
   UNLIKE_PRODUCT,
   TOGGLE_FAVORITE_DROPDOWN,
+  SET_FILTERED_PRODUCTS,
 } from './product.types';
 
 export const setAllProducts = products => {
   return {
     type: SET_ALL_PRODUCTS,
+    products,
+  };
+};
+
+export const setFilteredProducts = products => {
+  return {
+    type: SET_FILTERED_PRODUCTS,
     products,
   };
 };

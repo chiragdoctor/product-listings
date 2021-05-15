@@ -19,7 +19,7 @@ const FavoriteDropdown = () => {
             <div key={like.id} className='fav-item-list'>
               {like.name}
               <button
-                className='custom-button'
+                className='cross-button'
                 onClick={() => handleRemoveFavorites(like)}
               >
                 X
