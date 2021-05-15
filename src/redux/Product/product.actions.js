@@ -2,6 +2,7 @@ import {
   LIKE_PRODUCT,
   SET_ALL_PRODUCTS,
   UNLIKE_PRODUCT,
+  TOGGLE_FAVORITE_DROPDOWN,
 } from './product.types';
 
 export const setAllProducts = products => {
@@ -22,5 +23,11 @@ export const unlikeProduct = product => {
   return {
     type: UNLIKE_PRODUCT,
     product,
+  };
+};
+
+export const toggleFavoriteDropdown = () => {
+  return {
+    type: TOGGLE_FAVORITE_DROPDOWN,
   };
 };

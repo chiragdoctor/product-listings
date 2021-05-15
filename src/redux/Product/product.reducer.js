@@ -1,12 +1,14 @@
 import {
   LIKE_PRODUCT,
   SET_ALL_PRODUCTS,
+  TOGGLE_FAVORITE_DROPDOWN,
   UNLIKE_PRODUCT,
 } from './product.types';
 
 const INITIAL_STATE = {
   products: [],
   liked: [],
+  hidden: true,
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -25,6 +27,11 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         liked: state.liked.filter(p => p.id !== action.product.id),
+      };
+    case TOGGLE_FAVORITE_DROPDOWN:
+      return {
+        ...state,
+        hidden: !state.hidden,
       };
     default:
       return state;

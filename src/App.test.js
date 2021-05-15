@@ -45,7 +45,7 @@ describe('App Component', () => {
     expect(cp.exists()).toBe(true);
   });
 
-  it('should call getProducts on initial render', () => {
+  it.skip('should call getProducts on initial render', () => {
     expect(getProductsSpy).toHaveBeenCalled();
   });
 
