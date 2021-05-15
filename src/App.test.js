@@ -7,44 +7,17 @@ import App from './App';
 import Header from './components/header/Header';
 import * as products from './services/product';
 import CollectionPreview from './components/collection-preview/CollectionPreview';
+import productList from './data/products.json';
 
 describe('App Component', () => {
   let wrapper;
   let store;
   let getProductsSpy;
-  const mockProducts = [
-    {
-      id: '1',
-      date: '2021-02-21T20:17:26.366Z',
-      name: 'Arch Blick',
-      img: 'https://placeimg.com/640/360/any',
-      sold: true,
-    },
-    {
-      id: '2',
-      date: '2021-02-22T06:28:38.305Z',
-      name: 'Ms. Fiona Spencer',
-      img: 'https://placeimg.com/640/360/any',
-      sold: true,
-    },
-    {
-      id: '3',
-      date: '2021-02-22T06:48:22.667Z',
-      name: 'April Gusikowski',
-      img: 'https://placeimg.com/640/360/any',
-      sold: true,
-    },
-    {
-      id: '4',
-      date: '2021-02-21T20:08:38.075Z',
-      name: 'Lindsay McLaughlin',
-      img: 'https://placeimg.com/640/360/any',
-      sold: false,
-    },
-  ];
+  const mockProducts = [productList[0], productList[1], productList[2]];
   let initialState = {
     products: {
       products: mockProducts,
+      liked: mockProducts,
     },
   };
   const mockStore = configureStore([thunk]);

@@ -1,1 +1,3 @@
 export const SET_ALL_PRODUCTS = 'SET_ALL_PRODUCTS';
+export const LIKE_PRODUCT = 'LIKE_PRODUCT';
+export const UNLIKE_PRODUCT = 'UNLIKE_PRODUCT';

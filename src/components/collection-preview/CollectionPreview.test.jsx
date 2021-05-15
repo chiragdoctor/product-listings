@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import CollectionPreview from './CollectionPreview';
 import CollectionItem from '../collection-item/CollectionItem';
 
-describe('App Component', () => {
+describe('Collection Preview Component', () => {
   let wrapper;
   let store;
   const mockProducts = [
@@ -42,6 +42,7 @@ describe('App Component', () => {
   let initialState = {
     products: {
       products: mockProducts,
+      liked: mockProducts,
     },
   };
   const mockStore = configureStore([thunk]);
