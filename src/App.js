@@ -1,6 +1,7 @@
 import { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import './App.css';
+import './App.scss';
+import CollectionPreview from './components/collection-preview/CollectionPreview';
 import Header from './components/header/Header';
 import { setAllProducts } from './redux/Product/product.actions';
 import { getProducts } from './services/product';
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className='App'>
       <Header />
+      <CollectionPreview />
     </div>
   );
 }
